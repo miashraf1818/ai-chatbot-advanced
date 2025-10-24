@@ -1,0 +1,241 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hello",
+        "Hey",
+        "Good morning",
+        "Good evening",
+        "What's up",
+        "How are you",
+        "Is anyone there",
+        "Hello there",
+        "Greetings"
+      ],
+      "responses": [
+        "Hello! How can I help you today?",
+        "Hi there! What can I do for you?",
+        "Hey! How may I assist you?",
+        "Greetings! How can I be of service?",
+        "Hello! I'm here to help. What do you need?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "Goodbye",
+        "See you later",
+        "Take care",
+        "Catch you later",
+        "I'm leaving",
+        "Have a good day",
+        "Talk to you later",
+        "Gotta go",
+        "See ya"
+      ],
+      "responses": [
+        "Goodbye! Have a great day!",
+        "See you later! Take care!",
+        "Bye! Come back soon!",
+        "It was nice talking to you. Goodbye!",
+        "Take care! See you next time!"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's helpful",
+        "Appreciate it",
+        "Thanks a lot",
+        "Thank you so much",
+        "I appreciate your help",
+        "Awesome, thanks",
+        "Thanks for helping me",
+        "Much appreciated"
+      ],
+      "responses": [
+        "You're welcome!",
+        "Happy to help!",
+        "Anytime! Glad I could assist!",
+        "My pleasure!",
+        "You're very welcome!"
+      ]
+    },
+    {
+      "tag": "about",
+      "patterns": [
+        "What can you do",
+        "Who are you",
+        "What are you",
+        "What is your purpose",
+        "Tell me about yourself",
+        "What are your capabilities",
+        "How can you help me",
+        "What services do you offer",
+        "What do you do",
+        "Explain your features"
+      ],
+      "responses": [
+        "I'm an AI chatbot designed to assist you with various tasks and answer your questions!",
+        "I'm here to help you! I can answer questions, provide information, and assist with various tasks.",
+        "I'm an intelligent assistant powered by machine learning. I can help with information, support, and more!",
+        "I'm your friendly AI assistant! Ask me anything and I'll do my best to help you."
+      ]
+    },
+    {
+      "tag": "help",
+      "patterns": [
+        "Help",
+        "Can you help me",
+        "I need help",
+        "Help me please",
+        "Support",
+        "I need assistance",
+        "Can you assist me",
+        "I'm stuck",
+        "I need your help",
+        "Please help"
+      ],
+      "responses": [
+        "Of course! What do you need help with?",
+        "I'm here to help! What's the issue?",
+        "Sure! Tell me what you need assistance with.",
+        "I'd be happy to help! What's bothering you?",
+        "Let me assist you. What do you need?"
+      ]
+    },
+    {
+      "tag": "hours",
+      "patterns": [
+        "What are your hours",
+        "When are you available",
+        "What time are you open",
+        "Are you available 24/7",
+        "When can I reach you",
+        "What's your availability",
+        "Do you work all day"
+      ],
+      "responses": [
+        "I'm available 24/7 to assist you!",
+        "I'm here around the clock! You can message me anytime.",
+        "I never sleep! I'm available 24/7 to help you.",
+        "Anytime you need help, I'm here! I work 24/7."
+      ]
+    },
+    {
+      "tag": "joke",
+      "patterns": [
+        "Tell me a joke",
+        "Make me laugh",
+        "Do you know any jokes",
+        "Say something funny",
+        "Can you tell jokes",
+        "I want to hear a joke",
+        "Joke please"
+      ],
+      "responses": [
+        "Why don't programmers like nature? It has too many bugs! 😄",
+        "Why do programmers prefer dark mode? Because light attracts bugs! 🐛",
+        "What's a computer's favorite snack? Microchips! 🍟",
+        "Why did the developer go broke? Because he used up all his cache! 💰"
+      ]
+    },
+    {
+      "tag": "weather",
+      "patterns": [
+        "What's the weather",
+        "How's the weather today",
+        "Is it going to rain",
+        "Weather forecast",
+        "Tell me the weather",
+        "What's the temperature",
+        "Is it sunny today"
+      ],
+      "responses": [
+        "I don't have access to real-time weather data, but you can check weather.com or your local forecast!",
+        "I can't check the weather right now, but I recommend checking a weather app for accurate information!",
+        "For current weather conditions, I suggest checking Google Weather or your weather app!"
+      ]
+    },
+    {
+      "tag": "age",
+      "patterns": [
+        "How old are you",
+        "What's your age",
+        "When were you created",
+        "How long have you existed",
+        "What is your age"
+      ],
+      "responses": [
+        "I'm a machine learning model, so I don't have an age in the traditional sense!",
+        "I was created recently, but I'm constantly learning and improving!",
+        "Age is just a number for AI! I'm always getting smarter though! 🤖"
+      ]
+    },
+    {
+      "tag": "name",
+      "patterns": [
+        "What's your name",
+        "What should I call you",
+        "Do you have a name",
+        "What are you called",
+        "Tell me your name"
+      ],
+      "responses": [
+        "I'm an AI Chatbot! You can call me whatever you like!",
+        "I don't have a specific name, but you can call me your AI assistant!",
+        "I'm your friendly AI helper! Feel free to give me a name if you'd like!"
+      ]
+    },
+    {
+      "tag": "developer",
+      "patterns": [
+        "Who created you",
+        "Who made you",
+        "Who is your developer",
+        "Who built you",
+        "Who's your creator"
+      ],
+      "responses": [
+        "I was created by a talented developer as part of an AI chatbot project!",
+        "I'm built using Django, React, and machine learning technologies!",
+        "I was developed as an advanced AI chatbot using Python and NLP!"
+      ]
+    },
+    {
+      "tag": "capabilities",
+      "patterns": [
+        "What can you do for me",
+        "What are your skills",
+        "List your features",
+        "What tasks can you perform",
+        "What are you good at"
+      ],
+      "responses": [
+        "I can answer questions, provide information, chat with you, and assist with various tasks!",
+        "I'm good at conversing, answering queries, and helping you with information!",
+        "I can understand your messages and respond intelligently to help you out!"
+      ]
+    },
+    {
+      "tag": "noanswer",
+      "patterns": [
+        "I don't understand",
+        "What do you mean",
+        "Can you explain",
+        "I'm confused",
+        "That doesn't make sense"
+      ],
+      "responses": [
+        "I apologize for the confusion. Could you rephrase your question?",
+        "Sorry about that! Let me try to explain better. What would you like to know?",
+        "I may not have understood correctly. Can you ask in a different way?"
+      ]
+    }
+  ]
+}
