@@ -5,22 +5,40 @@ Loads trained model and generates responses
 
 import pickle
 import random
-import nltk
-from nltk.stem import WordNetLemmatizer
 from pathlib import Path
 
 
 class ChatbotEngine:
     def __init__(self):
-        self.lemmatizer = WordNetLemmatizer()
         self.base_dir = Path(__file__).resolve().parent.parent
         self.model_path = self.base_dir / 'ml_models' / 'trained_models'
 
-        # Load models
-        self.load_models()
+        # Lazy loading flags
+        self._nltk_loaded = False
+        self._lemmatizer = None
+        self._models_loaded = False
+
+    def _ensure_nltk_loaded(self):
+        """Lazy load NLTK only when needed"""
+        if not self._nltk_loaded:
+            import nltk
+            from nltk.stem import WordNetLemmatizer
+
+            try:
+                nltk.data.find('tokenizers/punkt')
+                nltk.data.find('corpora/wordnet')
+            except LookupError:
+                nltk.download('punkt', quiet=True)
+                nltk.download('wordnet', quiet=True)
+
+            self._lemmatizer = WordNetLemmatizer()
+            self._nltk_loaded = True
 
     def load_models(self):
-        """Load trained models and data"""
+        """Load trained models and data (lazy loaded)"""
+        if self._models_loaded:
+            return
+
         try:
             # Load model
             with open(self.model_path / 'chatbot_model.pkl', 'rb') as f:
@@ -34,7 +52,20 @@ class ChatbotEngine:
             with open(self.model_path / 'responses.pkl', 'rb') as f:
                 self.responses_dict = pickle.load(f)
 
+            self._models_loaded = True
             print("✓ Models loaded successfully!")
+
+        except FileNotFoundError:
+            print("⚠ Trained models not found. Using fallback responses.")
+            self.model = None
+            self.vectorizer = None
+            self.responses_dict = {
+                'greeting': ['Hello!', 'Hi there!', 'Hey! How can I help you?'],
+                'goodbye': ['Goodbye!', 'See you later!', 'Take care!'],
+                'thanks': ['You\'re welcome!', 'Happy to help!', 'Anytime!'],
+                'default': ['I\'m here to help! Can you rephrase that?']
+            }
+            self._models_loaded = True
 
         except Exception as e:
             print(f"Error loading models: {e}")
@@ -42,12 +73,29 @@ class ChatbotEngine:
 
     def preprocess_text(self, text):
         """Preprocess and lemmatize text"""
+        self._ensure_nltk_loaded()
+
+        import nltk
         tokens = nltk.word_tokenize(text.lower())
-        lemmatized = [self.lemmatizer.lemmatize(word) for word in tokens]
+        lemmatized = [self._lemmatizer.lemmatize(word) for word in tokens]
         return ' '.join(lemmatized)
 
     def predict_intent(self, message):
         """Predict intent from user message"""
+        self.load_models()
+
+        if self.model is None:
+            # Fallback: Simple keyword matching
+            message_lower = message.lower()
+            if any(word in message_lower for word in ['hi', 'hello', 'hey']):
+                return 'greeting', 0.8
+            elif any(word in message_lower for word in ['bye', 'goodbye', 'see you']):
+                return 'goodbye', 0.8
+            elif any(word in message_lower for word in ['thanks', 'thank you']):
+                return 'thanks', 0.8
+            else:
+                return 'default', 0.5
+
         # Preprocess message
         processed_message = self.preprocess_text(message)
 
