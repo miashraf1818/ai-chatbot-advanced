@@ -22,6 +22,7 @@ def root_health_check(request):
             'chatbot_api': '/api/chatbot/',
             'users_api': '/api/users/',
             'analytics_api': '/api/analytics/',
+            'google_login': '/accounts/google/login/',
         }
     })
 
@@ -32,6 +33,9 @@ urlpatterns = [
 
     # Django admin
     path('admin/', admin.site.urls),
+
+    # Django-allauth URLs (for Google OAuth)
+    path('accounts/', include('allauth.urls')),
 
     # API routes
     path('api/chatbot/', include('apps.chatbot.urls')),
