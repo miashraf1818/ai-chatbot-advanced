@@ -38,9 +38,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add WhiteNoise
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # Must be BEFORE CommonMiddleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -100,14 +100,41 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# CORS Settings - Production Safe
-CORS_ALLOWED_ORIGINS = config(
-    'CORS_ALLOWED_ORIGINS',
-    default='http://localhost:3000,http://127.0.0.1:3000'
-).split(',')
+# ✅ CORS Settings - FIXED FOR VERCEL!
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'https://ai-chatbot-frontend-seven.vercel.app',  # ✅ ADDED VERCEL!
+]
 
-# Allow credentials for Google OAuth
 CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+# ✅ CSRF TRUSTED ORIGINS - ADDED!
+CSRF_TRUSTED_ORIGINS = [
+    'https://ai-chatbot-frontend-seven.vercel.app',
+    'https://ai-chatbot-api-9kb0.onrender.com',
+]
 
 # Email Backend
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -155,8 +182,8 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-# GEMINI API KEY
-GEMINI_API_KEY = config('AIzaSyA2mS-VvxXBIDCtjgB7z4wJNDaQ1uDJlsA', default='')
+# ✅ GEMINI API KEY - FIXED (use environment variable!)
+GEMINI_API_KEY = config('GEMINI_API_KEY', default='')
 
 # Security Settings for Production
 if not DEBUG:
