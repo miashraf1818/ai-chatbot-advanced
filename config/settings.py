@@ -104,7 +104,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    'https://ai-chatbot-frontend-seven.vercel.app',  # ✅ ADDED VERCEL!
+    'https://ai-chatbot-frontend-seven.vercel.app',
+    'https://ikram-ai-chatbot.vercel.app'# ✅ ADDED VERCEL!
 ]
 
 CORS_ALLOW_CREDENTIALS = True
