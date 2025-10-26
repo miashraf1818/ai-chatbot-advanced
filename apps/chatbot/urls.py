@@ -31,11 +31,11 @@ urlpatterns = [
     # Search endpoint
     path('search/', SearchConversationsAPIView.as_view(), name='search'),
 
-    # ========== ADMIN ROUTES ==========
-    path('api/admin/dashboard/', admin_dashboard_stats, name='admin-dashboard'),
-    path('api/admin/users/', admin_users_list, name='admin-users-list'),
-    path('api/admin/users/<int:user_id>/', admin_user_detail, name='admin-user-detail'),
-    path('api/admin/users/<int:user_id>/toggle/', admin_toggle_user_status, name='admin-toggle-user'),
-    path('api/admin/users/<int:user_id>/delete/', admin_delete_user, name='admin-delete-user'),
-    path('api/admin/health/', admin_system_health, name='admin-health'),
+    # ========== ADMIN ROUTES ========== (✅ FIXED - Removed 'api/' prefix)
+    path('admin/dashboard/', admin_dashboard_stats, name='admin-dashboard'),
+    path('admin/users/', admin_users_list, name='admin-users-list'),
+    path('admin/users/<int:user_id>/', admin_user_detail, name='admin-user-detail'),
+    path('admin/users/<int:user_id>/toggle/', admin_toggle_user_status, name='admin-toggle-user'),
+    path('admin/users/<int:user_id>/delete/', admin_delete_user, name='admin-delete-user'),
+    path('admin/health/', admin_system_health, name='admin-health'),
 ]
