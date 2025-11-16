@@ -42,26 +42,27 @@ Dev Tools	Git, Postman, VS Code, PyCharm
 ai-chatbot-django/
 │
 ├── manage.py
+│
 ├── core/
-│   ├── settings.py # Environment & Gemini key config
-│   ├── urls.py  # API routing
+│   ├── settings.py        # Environment & Gemini key config
+│   ├── urls.py            # API routing
 │   └── wsgi.py
 │
 ├── users/
-│   ├── models.py  # Google user profiles
-│   ├── views.py  # Google login and tokens
+│   ├── models.py          # Google user profiles
+│   ├── views.py           # Google login and tokens
 │   ├── serializers.py
 │   └── urls.py
 │
 ├── chat/
-│   ├── views.py  # Chat logic with Gemini API
-│   ├── services.py # Gemini API integration functions
+│   ├── views.py           # Chat logic with Gemini API
+│   ├── services.py        # Gemini API integration functions
 │   ├── serializers.py
 │   └── urls.py
 │
-├── requirements.txt # Dependencies
-├── Dockerfile # Container setup
-└── .env.example # Sample environment variables
+├── requirements.txt       # Dependencies
+├── Dockerfile             # Container setup
+└── .env.example           # Sample environment variables
 
 ⸻
 
@@ -165,4 +166,5 @@ You’re free to use, modify, and distribute it with proper attribution.
 🌟 Summary
 
 Django-based AI chatbot backend integrating Google Gemini API and Google Authentication, designed for secure, intelligent, and scalable real-time conversations.
+
 
